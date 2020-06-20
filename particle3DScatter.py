@@ -27,8 +27,6 @@ class Particle3DScatter(object):
         self.ax.set_title('3D Particle Swarm Optimization')
         self.genSurface()
 
-        self.ani = FuncAnimation(self.fig, self.update, frames = self.it + 1, init_func = self.setup, blit = False, interval = 1)
-
     def setup(self):
         seed(0)
         self.xp = np.asarray([-3 + 6 * random() for i in self.nRange])
@@ -125,6 +123,8 @@ class Particle3DScatter(object):
         return a + (b - a) * random()
 
     def save(self, writer, filename):
+        self.ani = FuncAnimation(self.fig, self.update, frames = self.it + 1, init_func = self.setup, blit = False, interval = 1)
+
         self.mode = 'save'
         print('Exporting . . . Please, wait')
 
@@ -133,7 +133,13 @@ class Particle3DScatter(object):
         self.w = self.wls[self.cw]
         self.ani.save(filename, writer = writer.getWriter())
 
-    def show(self):
+    def plot(self):
+        self.ani = None
+        plt.show()
+
+    def start(self):
+        self.ani = FuncAnimation(self.fig, self.update, frames = self.it + 1, init_func = self.setup, blit = False, interval = 1)
+
         self.mode = 'show'
 
         self.cit = self.it

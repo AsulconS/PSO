@@ -3,4 +3,5 @@ __pycache__
 test.py
 
 OLDVids
+*.png
 *.mp4

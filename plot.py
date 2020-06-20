@@ -17,7 +17,7 @@ def startPSO(mode = '2D', export = 0, fps = 60):
         writer = FFMPEG_Writer(fps = fps, artist = 'AsulconS')
         particleScatter.save(writer, filename)
 
-    particleScatter.show()
+    particleScatter.start()
 
 def main():
     mode = input('Please, select the mode (type in 2D or 3D): ')
